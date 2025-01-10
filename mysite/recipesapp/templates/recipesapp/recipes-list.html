@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% extends "recipesapp/base.html" %}
+
+{% block body %}
+    <h1>Recipes:</h1>
+    {% if recipes  %}
+    <div>
+        {% for recipe in recipes %}
+        <div>
+            <h3>{{ recipe.title }}- {{ recipe.description }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <h3>No recipes found.</h3>
+    {% endif %}
+{% endblock body %}
+
