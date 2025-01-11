@@ -2,6 +2,14 @@
 
 {% block body %}
 
-<h3 style="display: flex; justify-content: center; ">Новые рецепты:</h3>
+  <h3 style="display: flex; justify-content: center; ">Новые рецепты:</h3>
 
-{% endblock body %}
+      <div>
+          {% for recipe in recipes %}
+          <div>
+              <h3>{{ recipe.title }}</h3>
+          </div>
+          {% endfor %}
+      </div>
+
+{% endblock %}

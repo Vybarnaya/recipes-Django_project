@@ -1,15 +1,14 @@
-<!DOCTYPE html>
 
 {% extends "recipesapp/base.html" %}
 
 {% block body %}
-    <h1>Recipes:</h1>
+    <h3 style="display: flex; justify-content: center; ">Recipes:</h3>
     {% if recipes  %}
     <div>
         {% for recipe in recipes %}
-        <div>
-            <h3>{{ recipe.title }}- {{ recipe.description }}</h3>
-        </div>
+        <li>
+            <strong>{{ recipe.title }}</strong> - {{ recipe.description_short }}. (author {{recipe.author}})
+        </li>
         {% endfor %}
     </div>
     {% else %}
