@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipesapp.apps.RecipesappConfig',
+    'userslist.apps.UserslistConfig',
 ]
 
 MIDDLEWARE = [

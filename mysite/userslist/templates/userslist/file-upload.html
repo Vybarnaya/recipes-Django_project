@@ -1,0 +1,20 @@
+{% extends 'userslist/base.html' %}
+ <title>
+  {% block title %}
+    File upload
+  {% endblock %}
+  </title>
+
+<body>
+  {% block body %}
+  <h1>Upload file</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>
+    <input type="file" name="file">
+    </p>
+    <button type="submit">Upload</button>
+  </form>
+  {% endblock %}
+
+</body>
