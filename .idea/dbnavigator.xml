@@ -30,7 +30,9 @@
     <connection id="0aff1afe-043c-483b-9005-a822d3bcccfd" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="0aff1afe-043c-483b-9005-a822d3bcccfd" dataset="main.auth_user" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="0aff1afe-043c-483b-9005-a822d3bcccfd" dataset="main.recipesapp_recipe" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="0aff1afe-043c-483b-9005-a822d3bcccfd" dataset="main.recipesapp_author" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />

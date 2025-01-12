@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 from .models import Recipe
 
-
 def recipe_index(request: HttpRequest):
     return render(request, "recipesapp/recipe-index.html")
     # recipes = models.Recipe.objects.all()

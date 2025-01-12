@@ -1,0 +1,20 @@
+{% extends "recipesapp/base.html" %}
+
+{% block title %}
+  <title>Сайт ПП-рецептов. Авторы</title>
+{% endblock %}
+
+{% block body %}
+  <h3 style="display: flex; justify-content: center; ">Авторы:</h3>
+  {% if authors  %}
+    <div>
+      {% for author in authors %}
+      <li>
+        <strong>{{ author}}</strong>
+      </li>
+      {% endfor %}
+    </div>
+  {% else %}
+    <h3>No authors found.</h3>
+  {% endif %}
+{% endblock %}
