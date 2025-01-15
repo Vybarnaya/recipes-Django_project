@@ -1,9 +1,13 @@
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpRequest
 from django.shortcuts import render
+from.forms import UserForm
 
 def user_form(request: HttpRequest):
-    return render(request, 'userslist/user-form.html')
+    context = {
+        'form': UserForm(),
+    }
+    return render(request, 'userslist/user-form.html', context)
 
 
 def handle_file_upload(request: HttpRequest):
