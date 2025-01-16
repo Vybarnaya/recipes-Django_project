@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  {% extends "recipesapp/base.html" %}
+
+  {% block title %}
+    <title>Рецепт №{{ recipe.pk }}</title>
+  {% endblock %}
+<body>
+  {% block body %}
+
+  <h1>Ознакомьтесь с рецептом  <em>{{ recipe.title }}</em></h1>
+  <div>
+    <p>Описание:<em> {{ recipe.description }}</em></p>
+  </div>
+  <div>
+    <p>Шаги приготовления:<em> {{ recipe.steps_of_cooking }}</em></p>
+  </div>
+  <div>
+    <p>Автор: <em>{{ recipe.author }} </em></p>
+  </div>
+  <div>
+    <p>Дата создания: <em>{{ recipe.created_at }} </em></p>
+  </div>
+  <div>
+    <a href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+  </div>
+  {% endblock %}
+</body>
+</html>
