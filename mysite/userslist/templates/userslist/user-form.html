@@ -11,26 +11,7 @@
     <div>
       <form method="POST">
         {% csrf_token %}
-        <p>
-          <label for="f-name">First name</label>
-          <input id="f-name" name="fname" type="text" maxlength="25">
-        </p>
-        <p>
-          <label for="l-name">Last name</label>
-          <input id="l-name" name="lname" type="text" maxlength="25">
-        </p>
-        <p>
-          <label for="age">Age</label>
-          <input id="age" name="age" type="number" min="1" max="99" maxlength="2">
-        </p>
-        <p>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" maxlength="50">
-        </p>
-        <p>
-          <label for="myself">Myself</label>
-          <textarea name="myself" id="myself"  cols="42" rows="5"></textarea>
-        </p>
+        {{ form.as_p }}
         <button type="submit">
           Submit
         </button>
@@ -42,11 +23,11 @@
       <table>
         <tr>
           <td>First name:</td>
-          <td>{{ request.POST.fname }}</td>
+          <td>{{ request.POST.first_name }}</td>
         </tr>
         <tr>
           <td>Last name:</td>
-          <td>{{ request.POST.lname }}</td>
+          <td>{{ request.POST.last_name }}</td>
         </tr>
         <tr>
           <td>Age:</td>
