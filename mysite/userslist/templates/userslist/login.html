@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  {% extends "userslist/base.html" %}
+  <title>
+  {% block title %}
+    Авторизация
+  {% endblock %}
+  </title>
 </head>
 <body>
+  {% block body %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Войти</button>
+  </form>
+  {% endblock %}
 
 </body>
 </html>
