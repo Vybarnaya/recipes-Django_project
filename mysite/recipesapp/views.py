@@ -1,7 +1,8 @@
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import RecipeForm
 from .models import Recipe
@@ -10,56 +11,42 @@ class RecipeIndexView(View):
     def get(self, request: HttpRequest):
         return render(request, "recipesapp/recipe-index.html")
 
-# def recipe_index(request: HttpRequest):
-#     return render(request, "recipesapp/recipe-index.html")
-#     # recipes = models.Recipe.objects.all()
-#     # context = {'recipes': recipes}
-#     # return render(request, 'recipesapp/recipe-index.html', context)
-
 class RecipeListView(ListView):
     template_name ='recipesapp/recipes-list.html'
-    model = Recipe
+    # model = Recipe
     context_object_name = "recipes"
-
-
-# class RecipeListView(View):
-#     def get(self, request: HttpRequest):
-#         recipes = Recipe.objects.all()
-#         context = {'recipes': recipes}
-#         return render(request, "recipesapp/recipes-list.html", context=context)
-#     def post(self):
-#         pass
+    queryset = Recipe.objects.filter(archived=False)
 
 class RecipeDetailsView(DetailView):
     template_name = "recipesapp/recipe-details.html"
     model = Recipe
     context_object_name = "recipe"
 
-    # def get(self, request: HttpRequest, pk: int):
-    #     recipe = get_object_or_404(Recipe, pk=pk)
-    #     context = {'recipe': recipe}
-    #     return render(request, , context=context)
+class RecipeCreateView(CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    # fields = "title", "description", "time_for_cooking", "steps_of_cooking"
+    success_url = reverse_lazy('recipesapp:list')
+
+
+class RecipeUpdateView(UpdateView):
+    model = Recipe
+    fields = "title", "description", "time_for_cooking", "steps_of_cooking"
+    template_name_suffix = "_update_form"
+    def get_success_url(self):
+        return reverse('recipesapp:recipe_details',
+                       kwargs={"pk":self.object.pk},)
+
+class RecipeDeleteView(DeleteView):
+    model = Recipe
+    success_url = reverse_lazy('recipesapp:list')
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.archived = True
+        self.object.save()
+        return HttpResponseRedirect(success_url)
 
 
 
-# def recipe_list(request: HttpRequest):
-#     recipes = Recipe.objects.all()
-#     context = {'recipes': recipes}
-#     return render(request, "recipesapp/recipes-list.html", context=context)
-
-def recipe_create(request: HttpRequest):
-    if request.method == 'POST':
-        form = RecipeForm(request.POST)
-        if form.is_valid():
-            # Recipe.objects.create(**form.cleaned_data)
-            form.save()
-
-            url = reverse('recipesapp:list')
-            return redirect(url)
-    else:
-        form = RecipeForm()
-
-    context = {'form': form}
-    return render(request, "recipesapp/create-recipe.html", context=context)
 
 

@@ -7,6 +7,7 @@
   {% block title %}
     <title>Рецепт №{{ recipe.pk }}</title>
   {% endblock %}
+</head>
 <body>
   {% block body %}
 
@@ -24,8 +25,21 @@
     <p>Дата создания: <em>{{ recipe.created_at }} </em></p>
   </div>
   <div>
+    <p>Архив: <em>{{ recipe.archived }} </em></p>
+  </div>
+
+  <div>
+    <a href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
+  </div>
+  <br>
+  <div>
+    <a href="{% url 'recipesapp:recipe_delete' pk=recipe.pk %}">Удалить рецепт</a>
+  </div>
+  <br>
+  <div>
     <a href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
   </div>
+
   {% endblock %}
 </body>
 </html>

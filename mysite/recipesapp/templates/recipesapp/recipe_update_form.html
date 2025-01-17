@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  {% extends "recipesapp/base.html" %}
+
+  {% block title %}
+    <title>Изменение рецепта</title>
+  {% endblock %}
+</head>
+<body>
+  {% block body %}
+  <h3 style="display: flex; justify-content: center; color:red; ">Изменение рецепта:</h3>
+  <h4 style="text-align:left; color: blue;" >Внесите изенения в рецепт</h4>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить изменения</button>
+  </form>
+  <br>
+  <div>
+    <a style="text-decoration: none; color: red;" href="{% url 'recipesapp:recipe_details' pk=recipe.pk %}"><b>
+      Вернуться к рецепту {{recipe.title}}</b></a>
+  </div>
+  {% endblock %}
+
+</body>
+</html>

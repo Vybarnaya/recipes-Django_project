@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  {% extends "recipesapp/base.html" %}
+
+  {% block title %}
+    <title>Создание рецепта</title>
+  {% endblock %}
+</head>
+<body>
+  {% block body %}
+  <h3 style="display: flex; justify-content: center; color:red; ">Создание нового рецепта:</h3>
+  <h4 style="text-align:left; color: blue;" >Введите новый рецепт в форму</h4>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Создать рецепт</button>
+  </form>
+  <br>
+  <div>
+    <a style="text-decoration: none; color: red;" href="{% url 'recipesapp:list' %}"><b>
+      Вернуться к списку рецептов</b></a>
+  </div>
+  {% endblock %}
+
+</body>
+</html>

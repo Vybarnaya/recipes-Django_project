@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% extends "recipesapp/base.html" %}
+
+  {% block title %}
+    <title>Удаление рецепта </title>
+  {% endblock %}
+</head>
+<body>
+  {% block body %}
+    <h4 style="text-align:left; color: blue;" >Вы уверены, что хотите удалить рецепт "{{recipe.title}}" ?</h4>
+    <br>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Удалить рецепт</button>
+    </form>
+  <br>
+    <div>
+      <a style="text-decoration: none; color: red;" href="{% url 'recipesapp:recipe_details' pk=recipe.pk %}"><b>
+        Вернуться к рецепту "{{recipe.title}}"</b></a>
+    </div>
+  {% endblock %}
+</body>
+</html>
