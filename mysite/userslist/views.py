@@ -1,12 +1,12 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView
-from django.core.files.storage import FileSystemStorage
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from .models import Profile
+
+
 
 class AboutMeView(TemplateView):
     template_name = 'userslist/about-me.html'
@@ -16,11 +16,13 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('userslist:about-me')
     def form_valid(self, form):
         response = super().form_valid(form)
+        Profile.objects.create(user=self.object)
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
         user = authenticate(self.request,
             username=username, password=password)
         login(request=self.request, user=user)
+
         return response
 
 def login_view(request: HttpRequest):
@@ -43,12 +45,10 @@ def logout_view(request: HttpRequest):
     logout(request)
     return redirect('userslist:login')
 
-
 def set_cookie_view(request: HttpRequest):
     response = HttpResponse("Cookie set")
     response.set_cookie('fizz', 'buzz', max_age=3600)
     return response
-
 
 def get_cookie_view(request: HttpRequest):
     fizz_value = request.COOKIES.get("fizz", "default value")

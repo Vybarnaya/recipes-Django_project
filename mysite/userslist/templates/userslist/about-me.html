@@ -16,6 +16,7 @@
       <p>Имя: {{ user.first_name }}</p>
       <p>Фамилия: {{ user.last_name }}</p>
       <p>Email: {{ user.email }}</p>
+      <p>Дата рождения: {{user.profile.date_of_birth}}</p>
     {% else %}
       <p>Вы не авторизованы. Пожалуйста, авторизуйтесь.</p>
     {% endif %}
