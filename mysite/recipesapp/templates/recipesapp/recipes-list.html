@@ -10,7 +10,8 @@
   <div>
     {% for recipe in recipes %}
     <li>
-      <a href= "{% url 'recipesapp:recipe_details' pk=recipe.pk %}"><strong>{{ recipe.title }}</strong></a> - {{ recipe.description_short }}
+      <a href= "{% url 'recipesapp:recipe_details' pk=recipe.pk %}"><strong>{{ recipe.title }}
+      </strong></a> - {{ recipe.description_short }}
     </li>
     {% endfor %}
   </div>

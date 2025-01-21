@@ -1,8 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-class Recipe(models.Model):
+def recipe_photo_directory_path(instance:"Recipe", filename: str):
+    return "recipies/recipe_{pk}/photo/{filename}".format(
+        pk=instance.pk,
+        filename=filename,)
 
+
+class Recipe(models.Model):
     class Meta:
         verbose_name = "Recipe"
         # ordering = ['-created_at']  # Sort by most recently created first
@@ -16,7 +21,7 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     archived = models.BooleanField(default=False)
-
+    photo = models.ImageField(null=True,  blank=True, upload_to=recipe_photo_directory_path)
 
     @property
     def description_short(self):
@@ -27,5 +32,6 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
 
 

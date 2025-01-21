@@ -27,7 +27,9 @@
   <div>
     <p>Архив: <em>{{ recipe.archived }} </em></p>
   </div>
-
+  <div>
+      <img src="{{ recipe.photo.url }}" alt="">
+  </div>
   <div>
     <a href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
   </div>

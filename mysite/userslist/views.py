@@ -1,12 +1,18 @@
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import TemplateView, CreateView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.utils.translation import gettext_lazy as _
 from .models import Profile
 
-
+class HelloView(View):
+    welcome_message = _('Welcome everyone!!!')
+    def get(self, request: HttpRequest):
+        return HttpResponse(f"<h1>{self.welcome_message}</h1>")
 
 class AboutMeView(TemplateView):
     template_name = 'userslist/about-me.html'
@@ -53,7 +59,7 @@ def set_cookie_view(request: HttpRequest):
 def get_cookie_view(request: HttpRequest):
     fizz_value = request.COOKIES.get("fizz", "default value")
     return HttpResponse(f"Cookie value: {fizz_value!r}")
-
+@permission_required("userslist:view_profile", raise_exception=True)
 def set_session_view(request: HttpRequest):
     request.session['fizz'] = 'buzz'
     return HttpResponse("Session set")
