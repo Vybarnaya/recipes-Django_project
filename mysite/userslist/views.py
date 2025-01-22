@@ -35,8 +35,8 @@ def login_view(request: HttpRequest):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('recipesapp:list')
-        else:
-            return render(request, 'userslist/login.html')
+        # else:
+        #     return render(request, 'recipesapp:base.html')
 
     username = request.POST["username"]
     password = request.POST["password"]
@@ -49,7 +49,8 @@ def login_view(request: HttpRequest):
 
 def logout_view(request: HttpRequest):
     logout(request)
-    return redirect('userslist:login')
+    # return redirect('userslist:login')
+    return redirect('recipesapp:list')
 
 def set_cookie_view(request: HttpRequest):
     response = HttpResponse("Cookie set")

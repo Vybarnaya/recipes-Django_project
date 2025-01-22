@@ -4,7 +4,7 @@
   {% extends 'userslist/base.html' %}
  <title>
   {% block title %}
-    Обо мне
+    Профиль пользователя
   {% endblock %}
   </title>
 </head>
@@ -20,6 +20,9 @@
     {% else %}
       <p>Вы не авторизованы. Пожалуйста, авторизуйтесь.</p>
     {% endif %}
+  <div>
+    <a href="{% url 'recipesapp:list' %}">Вернуться на главную</a>
+  </div>
   {% endblock %}
 </body>
 </html>
