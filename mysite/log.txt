@@ -1,0 +1,19 @@
+2025-01-22 14:57:03,096 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 14:57:20,767 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 14:57:21,978 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 14:59:48,304 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\mysite\settings.py changed, reloading.
+2025-01-22 14:59:48,861 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-22 15:59:09,571 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\mysite\urls.py changed, reloading.
+2025-01-22 15:59:09,983 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-22 15:59:14,734 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-22 15:59:45,379 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 15:59:46,439 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 15:59:47,838 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 16:00:21,790 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-22 16:01:53,812 [WARNING] django.request: Not Found: /user1
+2025-01-22 16:02:03,232 [WARNING] django.request: Not Found: /user/user1
+2025-01-22 16:03:03,090 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-22 16:03:37,400 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\mysite\urls.py changed, reloading.
+2025-01-22 16:03:37,690 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\mysite\urls.py changed, reloading.
+2025-01-22 16:03:37,880 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-22 16:03:38,193 [INFO] django.utils.autoreload: Watching for file changes with StatReloader

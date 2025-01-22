@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('recipe/', include('recipesapp.urls')),
     path('user/', include('userslist.urls')),
+    path('api/', include('myapiapp.urls')),
 ]
 
 urlpatterns += i18n_patterns(

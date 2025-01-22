@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'recipesapp.apps.RecipesappConfig',
     'userslist.apps.UserslistConfig',
+    'myapiapp.apps.MyapiappConfig',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +144,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = reverse_lazy('userslist:about-me')
 LOGIN_URL = reverse_lazy('userslist:login')
+
+LOGFILE_NAME = BASE_DIR / 'log.txt'
+LOGFILE_SIZE = 1 * 1024 * 1024
+LOGFILE_COUNT = 3
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'logfile': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOGFILE_NAME,
+            'formatter': 'verbose',
+            'maxBytes': LOGFILE_SIZE,
+            'backupCount': LOGFILE_COUNT
+        },
+    },
+    'root': {
+            'level': 'INFO',
+            'handlers': ['console', 'logfile'],
+    },
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
+    'PAGE_SIZE': 10,
+}

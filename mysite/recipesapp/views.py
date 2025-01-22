@@ -4,12 +4,15 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-
+import logging
 from .forms import RecipeForm
 from .models import Recipe
 
+log = logging.getLogger(__name__)
 class RecipeIndexView(View):
     def get(self, request: HttpRequest):
+        log.info("User accessed recipe index page")
+
         return render(request, "recipesapp/recipe-index.html")
 
 class RecipeListView(ListView):
@@ -17,6 +20,7 @@ class RecipeListView(ListView):
     # model = Recipe
     context_object_name = "recipes"
     queryset = Recipe.objects.filter(archived=False)
+
 
 class RecipeDetailsView(DetailView):
     template_name = "recipesapp/recipe-details.html"

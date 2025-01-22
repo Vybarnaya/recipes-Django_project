@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-21 10:35+0300\n"
+"POT-Creation-Date: 2025-01-21 11:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,18 +20,22 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\mysite\settings.py:124
+#: .\mysite\settings.py:125
 msgid "English"
 msgstr ""
 
-#: .\mysite\settings.py:125
+#: .\mysite\settings.py:126
 msgid "French"
 msgstr ""
 
-#: .\mysite\settings.py:126
+#: .\mysite\settings.py:127
 msgid "Russian"
 msgstr "Русский"
 
-#: .\userslist\views.py:14
+#: .\recipesapp\templates\recipesapp\recipes-list.html:10
+msgid "Рецепты"
+msgstr ""
+
+#: .\userslist\views.py:13
 msgid "Welcome everyone!!!"
 msgstr "Всем привет!!!"
