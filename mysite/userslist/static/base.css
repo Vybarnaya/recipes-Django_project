@@ -7,7 +7,9 @@ body {
 }
 
 p {
-    line-height: 1.8;
+    line-height: 2.5;
+    margin:20px 0;
+    font-family: Geneva;
 }
 
 a {

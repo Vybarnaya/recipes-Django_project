@@ -9,7 +9,7 @@
       {% if title %}
          <title>{{title}}</title>
       {% else %}
-        <title>Сайт ПП-рецептов.{{title}}</title>
+        <title>Сайт простых рецептов{{title}}</title>
       {% endif %}
     {% endblock %}
     <link
@@ -24,6 +24,18 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
+        <a class="nav-link active" style="color: aliceblue;" href="{% url 'recipesapp:index' %}">Главная</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <a class="nav-link active" style="color: aliceblue;" href="{% url 'recipesapp:list' %}">Рецепты</a>
         <button
           class="navbar-toggler"
@@ -57,7 +69,7 @@
     </nav>
     <div class="container mt-4 col-8">
       {% if messages %} {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
       {% endfor %} {% endif %} {% block content %} {% endblock %}
     </div>
     <script
@@ -76,18 +88,9 @@
       crossorigin="anonymous"
     ></script>
     {% block body %}
-      Base body
+
+
     {% endblock %}
     <br>
-    <div>
-      <div>
-        {% now 'l' as current_day %}
-        Сегодня {{ current_day }}
-      </div>
-
-      <div>
-        {% now "jS F Y H:i" %}
-      </div>
-    </div>
   </body>
 </html>

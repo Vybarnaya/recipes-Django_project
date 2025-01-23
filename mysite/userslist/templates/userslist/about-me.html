@@ -10,7 +10,7 @@
 </head>
 <body>
   {% block body %}
-    <h3>Информация о пользователе:</h3>
+    <h3>Профиль пользователя</h3>
     {% if user.is_authenticated %}
       <p>Имя пользователя: {{ user.username }}</p>
       <p>Имя: {{ user.first_name }}</p>

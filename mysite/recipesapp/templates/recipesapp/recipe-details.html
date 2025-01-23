@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends "recipesapp/base.html" %}
+{% load static %}
+
+<html>
 <head>
   <meta charset="utf-8" />
-  {% extends "recipesapp/base.html" %}
 
   {% block title %}
-    <title>Рецепт №{{ recipe.pk }}</title>
+    <title>Сайт простых рецептов.Рецепт №{{ recipe.pk }}</title>
   {% endblock %}
 </head>
 <body>
-  {% block body %}
+  {% block content %}
 
-  <h1>Ознакомьтесь с рецептом  <em>{{ recipe.title }}</em></h1>
+  <h1> <em>{{ recipe.title }}</em></h1>
   <div>
-    <p>Описание:<em> {{ recipe.description }}</em></p>
+    <p><b>Описание:</b><em> {{ recipe.description }}</em></p>
   </div>
   <div>
-    <p>Шаги приготовления:<em> {{ recipe.steps_of_cooking }}</em></p>
+    <p><b>Шаги приготовления:</b></p>
+      <p>{{ recipe.steps_of_cooking }}</p>
   </div>
   <div>
-    <p>Автор: <em>{{ recipe.author }} </em></p>
-  </div>
+    <p><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
+  </
   <div>
-    <p>Дата создания: <em>{{ recipe.created_at }} </em></p>
+    <p><b>Автор:</b> {{ recipe.author }}</p>
   </div>
+  {% if recipe.photo %}
+    <div>
+        <img width="250 px" style= "justify-content: center;" src="{{ recipe.photo.url }}" alt="">
+    </div>
+  {% else %}
+  <p style="color:red"><em><b>К сожалению, фото рецепта отсутствует.</b></em></p>
+  {% endif %}
   <div>
-    <p>Архив: <em>{{ recipe.archived }} </em></p>
+    <p style="color:grey">Дата создания: <em>{{ recipe.created_at|date:"F d, Y" }} </em></p>
   </div>
-  <div>
-      <img src="{{ recipe.photo.url }}" alt="">
-  </div>
+
+  <br>
   <div>
     <a href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
   </div>

@@ -1,15 +1,32 @@
+<!DOCTYPE html>
 {% extends "recipesapp/base.html" %}
+{% load static}
 
-{% block body %}
+<html>
+<head>
+  {% block title %}
+  <title>Сайт простых рецептов.Главная</title>
+  {% endblock %}
 
-  <h3 style="display: flex; justify-content: center; ">Новые рецепты:</h3>
+</head>
+<body>
+{% block content %}
 
-      <div>
-          {% for recipe in recipes %}
-          <div>
-              <h3>{{ recipe.title }}</h3>
-          </div>
-          {% endfor %}
-      </div>
+<h3 style="display: flex; justify-content: center; ">Добро пожаловать на наш сайт полезных и вкусных рецептов!</h3>
+  <div>
+    <br>
+  <img
+    width="1150px" src="https://pictures.pibig.info/uploads/posts/2023-11/thumbs/1700181876_pictures-pibig-info-p-kulinarnaya-raskraska-instagram-44.jpg"
+    alt="Живи вкусно!">
+  </div>
+  <br>
 
-{% endblock %}
+<h4 style="text-align: center; color:#DD3333;">Готовьте быстро, просто и вкусно с нашим сайтом! </h4>
+<h4 style="text-align: center; color:#DD3333;">Наши рецепты помогут Вам cэкономить время и угодить всем вкусам!</h4>
+
+
+{% endblock content %}
+</body>
+</html>
+
+

@@ -28,15 +28,14 @@ class RegisterView(CreateView):
         user = authenticate(self.request,
             username=username, password=password)
         login(request=self.request, user=user)
-
         return response
 
 def login_view(request: HttpRequest):
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('recipesapp:list')
-        # else:
-        #     return render(request, 'recipesapp:base.html')
+        else:
+            return render(request, 'recipesapp:list')
 
     username = request.POST["username"]
     password = request.POST["password"]
@@ -44,8 +43,10 @@ def login_view(request: HttpRequest):
     if user is not None:
         login(request, user)
         return redirect('recipesapp:list')
+        # return HttpResponse('Authenticated successfully')
     else:
         return render(request, 'userslist/login.html', {'error': 'Invalid username or password'})
+
 
 def logout_view(request: HttpRequest):
     logout(request)

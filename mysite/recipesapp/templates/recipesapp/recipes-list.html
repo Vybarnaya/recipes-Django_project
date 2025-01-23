@@ -1,26 +1,46 @@
+<!DOCTYPE html>
 {% extends "recipesapp/base.html" %}
+{% load static}
 
+<html>
+<head>
 {% block title %}
-  <title>Сайт ПП-рецептов. Рецепты</title>
+  <title>Сайт простых рецептов. Рецепты</title>
 {% endblock %}
-
-{% block body %}
-  <h3 style="display: flex; justify-content: center; ">Рецепты:</h3>
-  {% if recipes  %}
-  <div>
-    {% for recipe in recipes %}
-    <li>
-      <a href= "{% url 'recipesapp:recipe_details' pk=recipe.pk %}"><strong>{{ recipe.title }}
-      </strong></a> - {{ recipe.description_short }}
-    </li>
-    {% endfor %}
-  </div>
-  {% else %}
-  <h3>No recipes found.</h3>
-  {% endif %}
+</head>
+<body>
+{% block content %}
+  <h3 style="display: flex; justify-content: center; color: #DD3333">Добро пожаловать на наш замечательный сайт,
+    где каждое блюдо — настоящее произведение искусства. </h3>
+    <p style="display: flex; justify-content: center;">Здесь вы найдете простые рецепты, наполненные свежестью
+      и ароматом. И в то же время наши рецепты призваны удовлетворить ваши самые изысканные  кулинарные желания!</p>
 <br>
-  <div>
-    <a href="{% url 'recipesapp:recipe_create' %}"  target="blank">Добавить новый рецепт</a>
-  </div>
+  {% if recipes  %}
+
+    {% for recipe in recipes %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href= "{% url 'recipesapp:recipe_details' pk=recipe.pk %}" class="card-link" style="text-decoration: none;
+            color:black">{{ recipe.title }}
+          </a></h5>
+          <p>
+            {% if recipe.photo %}
+              <img class="card-img-top" style="width:50%" src="{{ recipe.photo.url }}" alt="" >
+            {% endif %}
+          </p>
+          <p class="card-text">{{ recipe.description }}</p>
+        <p><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
+      </div>
+    </div>
+        {% endfor %}
+
+      <br>
+      {% else %}
+      <h3>No recipes found.</h3>
+      {% endif %}
+    <br>
+
 {% endblock %}
+</body>
 
