@@ -5,8 +5,13 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 import logging
+
+from userslist.models import Profile
 from .forms import RecipeForm
 from .models import Recipe
+
+
+
 
 log = logging.getLogger(__name__)
 class RecipeIndexView(View):
@@ -32,6 +37,10 @@ class RecipeCreateView(CreateView):
     # form_class = RecipeForm
     fields = "title", "description", "steps_of_cooking", "time_for_cooking", "author", "photo"
     success_url = reverse_lazy('recipesapp:list')
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 
 class RecipeUpdateView(PermissionRequiredMixin, UpdateView):

@@ -5,52 +5,50 @@
 <html>
 <head>
   <meta charset="utf-8" />
-
   {% block title %}
     <title>Сайт простых рецептов.Рецепт №{{ recipe.pk }}</title>
   {% endblock %}
 </head>
 <body>
   {% block content %}
-
-  <h1> <em>{{ recipe.title }}</em></h1>
-  <div>
-    <p><b>Описание:</b><em> {{ recipe.description }}</em></p>
-  </div>
-  <div>
-    <p><b>Шаги приготовления:</b></p>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="card-title"> <em>{{ recipe.title }}</em></h4>
+      <p class="card-text"><b>Описание:</b></p>
+      <p> {{ recipe.description }}</p>
+      <br>
+      <p class="card-text"><b>Шаги приготовления:</b></p>
       <p>{{ recipe.steps_of_cooking }}</p>
-  </div>
-  <div>
-    <p><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
-  </
-  <div>
-    <p><b>Автор:</b> {{ recipe.author }}</p>
-  </div>
-  {% if recipe.photo %}
+      <p class="card-text"><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
+      <h6 class="card-subtitle mb-2 text-muted">Автор: {{ recipe.author }}</h6>
+    {% if recipe.photo %}
+      <div>
+          <img class="card-img-top" style="width:50%" src="{{ recipe.photo.url }}" alt="">
+      </div>
+    {% else %}
+      <p class="card-text" style="color:red"><em><b>К сожалению, фото рецепта отсутствует.</b></em></p>
+    {% endif %}
     <div>
-        <img width="250 px" style= "justify-content: center;" src="{{ recipe.photo.url }}" alt="">
+      <p class="card-subtitle mb-2 text-muted" style="color:grey">Дата создания: {{ recipe.created_at|date:"F d, Y" }}</p>
+    </div>
+   </div>
+  </div>
+
+  {% if object.author == user or user.is_staff %}
+    <div class="col-4">
+      <a class="btn btn-outline-info" href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
+    </div>
+    <div>
+      <a class="btn btn-outline-danger" href="{% url 'recipesapp:recipe_delete' pk=recipe.pk %}">Удалить рецепт</a>
+    </div>
+    <div>
+      <a class="btn btn-outline-info" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
     </div>
   {% else %}
-  <p style="color:red"><em><b>К сожалению, фото рецепта отсутствует.</b></em></p>
+  <div>
+    <a class="btn btn-outline-info" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+  </div>
   {% endif %}
-  <div>
-    <p style="color:grey">Дата создания: <em>{{ recipe.created_at|date:"F d, Y" }} </em></p>
-  </div>
-
-  <br>
-  <div>
-    <a href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
-  </div>
-  <br>
-  <div>
-    <a href="{% url 'recipesapp:recipe_delete' pk=recipe.pk %}">Удалить рецепт</a>
-  </div>
-  <br>
-  <div>
-    <a href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
-  </div>
-
   {% endblock %}
 </body>
 </html>

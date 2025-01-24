@@ -16,7 +16,6 @@
       и ароматом. И в то же время наши рецепты призваны удовлетворить ваши самые изысканные  кулинарные желания!</p>
 <br>
   {% if recipes  %}
-
     {% for recipe in recipes %}
     <div class="card mb-3">
       <div class="card-body">
@@ -26,21 +25,22 @@
           </a></h5>
           <p>
             {% if recipe.photo %}
-              <img class="card-img-top" style="width:50%" src="{{ recipe.photo.url }}" alt="" >
+              <a href= "{% url 'recipesapp:recipe_details' pk=recipe.pk %}">
+                <img class="card-img-top" style="width:50%" src="{{ recipe.photo.url }}" alt="" >
+              </a>
             {% endif %}
           </p>
           <p class="card-text">{{ recipe.description }}</p>
-        <p><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
+          <p class="card-text"><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
+          <a href="{% url 'recipesapp:recipe_details' pk=recipe.pk %}" class="btn btn-primary">Подробнее о рецепте</a>
       </div>
     </div>
-        {% endfor %}
-
+    {% endfor %}
       <br>
-      {% else %}
-      <h3>No recipes found.</h3>
-      {% endif %}
+  {% else %}
+    <h3>No recipes found.</h3>
+  {% endif %}
     <br>
-
 {% endblock %}
 </body>
 

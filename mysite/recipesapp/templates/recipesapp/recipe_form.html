@@ -1,28 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends "recipesapp/base.html" %}
+{% load static %}
+
+<html>
 <head>
   <meta charset="utf-8" />
-  {% extends "recipesapp/base.html" %}
-
   {% block title %}
-    <title>Создание рецепта</title>
+    <title>Сайт простых рецептов.Новый рецепт</title>
   {% endblock %}
 </head>
 <body>
-  {% block body %}
-  <h3 style="display: flex; justify-content: center; color:red; ">Создание нового рецепта:</h3>
-  <h4 style="text-align:left; color: blue;" >Введите новый рецепт в форму</h4>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Создать рецепт</button>
-  </form>
-  <br>
-  <div>
-    <a style="text-decoration: none; color: red;" href="{% url 'recipesapp:list' %}"><b>
-      Вернуться к списку рецептов</b></a>
+  {% block content %}
+  <div class="container">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Заполните все поля нового рецепта</legend>
+      {{ form.as_p }}
+      </fieldset>
+        <div class="form-group py-3">
+        <button class="btn btn-outline-primary"  type="submit" >Создать рецепт</button>
+        <a class="btn btn-outline-primary" style="height: 43px; width: 250px; margin-left: 20px;"
+           href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+        </div>
+    </form>
   </div>
   {% endblock %}
-
 </body>
 </html>
