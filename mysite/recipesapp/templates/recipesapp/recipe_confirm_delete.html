@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+{% extends "recipesapp/base.html" %}
+{% load static %}
+
+<html>
 <head>
   <meta charset="UTF-8">
-  {% extends "recipesapp/base.html" %}
-
   {% block title %}
-    <title>Удаление рецепта </title>
+    <title>Сайт простых рецептов.Удаление рецепта </title>
   {% endblock %}
 </head>
 <body>
-  {% block body %}
-    <h4 style="text-align:left; color: blue;" >Вы уверены, что хотите удалить рецепт "{{recipe.title}}" ?</h4>
-    <br>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Удалить рецепт</button>
-    </form>
-  <br>
-    <div>
-      <a style="text-decoration: none; color: red;" href="{% url 'recipesapp:recipe_details' pk=recipe.pk %}"><b>
-        Вернуться к рецепту "{{recipe.title}}"</b></a>
+  {% block content %}
+    <div class="container">
+      <form method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="mb-4">Вы уверены, что хотите удалить рецепт "{{recipe.title}}" ?</legend>
+          {{ form.as_p }}
+        </fieldset>
+        <div class="form-group py-3">
+          <button class="btn btn-outline-danger" type="submit">Удалить рецепт</button>
+          <a class="btn btn-outline-info" style="height: 43px; width: 200px; margin-left: 20px;"
+             href="{% url 'recipesapp:recipe_details' pk=recipe.pk %}">
+            Вернуться к рецепту </a>
+        </div>
+      </form>
     </div>
   {% endblock %}
 </body>

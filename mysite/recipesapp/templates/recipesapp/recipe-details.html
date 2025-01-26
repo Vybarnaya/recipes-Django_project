@@ -35,18 +35,18 @@
   </div>
 
   {% if object.author == user or user.is_staff %}
-    <div class="col-4">
+    <div class="form-group py-3">
       <a class="btn btn-outline-info" href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
     </div>
-    <div>
+    <div class="form-group py-3">
       <a class="btn btn-outline-danger" href="{% url 'recipesapp:recipe_delete' pk=recipe.pk %}">Удалить рецепт</a>
     </div>
-    <div>
-      <a class="btn btn-outline-info" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+    <div class="form-group py-3">
+      <a class="btn btn-outline-primary" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
     </div>
   {% else %}
-  <div>
-    <a class="btn btn-outline-info" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+  <div class="form-group py-3">
+    <a class="btn btn-outline-primary" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
   </div>
   {% endif %}
   {% endblock %}

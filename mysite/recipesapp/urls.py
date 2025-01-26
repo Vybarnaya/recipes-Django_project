@@ -5,7 +5,8 @@ from .views import RecipeIndexView,\
     RecipeDetailsView,\
     RecipeCreateView,\
     RecipeUpdateView,\
-    RecipeDeleteView
+    RecipeDeleteView,\
+    authors_list
 
 app_name = 'recipesapp'
 
@@ -16,4 +17,6 @@ urlpatterns = [
     path('list/<int:pk>/', RecipeDetailsView.as_view(), name='recipe_details'),
     path('list/<int:pk>/update', RecipeUpdateView.as_view(), name='recipe_update'),
     path('list/<int:pk>/delete', RecipeDeleteView.as_view(), name='recipe_delete'),
+    path('authors/', authors_list, name='authors'),  # Added this line to view authors list.
+
 ]
