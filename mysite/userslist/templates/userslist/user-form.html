@@ -1,12 +1,15 @@
+<!DOCTYPE html>
+
 {% extends 'userslist/base.html' %}
-  <title>
+{% load static %}
+
+<html>
   {% block title %}
-    User
+  <title> User</title>
   {% endblock %}
-  </title>
 
 <body>
-  {% block body %}
+  {% block content %}
     <h1>User Form</h1>
     <div>
       <form method="POST">
@@ -37,7 +40,10 @@
           <td>Email:</td>
           <td>{{ request.POST.email }}</td>
         </tr>
+      </table>
     </div>
   {% endif %}
   {% endblock %}
 </body>
+
+</html>

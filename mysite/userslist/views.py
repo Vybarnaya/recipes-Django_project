@@ -1,12 +1,14 @@
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, request
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.utils.translation import gettext_lazy as _
+from django.contrib import messages
+from .forms import UserForm, ProfileForm, User
 from .models import Profile
 
 class HelloView(View):
@@ -19,7 +21,7 @@ class AboutMeView(TemplateView):
 class RegisterView(CreateView):
     form_class = UserCreationForm
     template_name = 'userslist/register.html'
-    success_url = reverse_lazy('userslist:about-me')
+    success_url = reverse_lazy('recipesapp:list')
     def form_valid(self, form):
         response = super().form_valid(form)
         Profile.objects.create(user=self.object)
@@ -35,7 +37,7 @@ def login_view(request: HttpRequest):
         if request.user.is_authenticated:
             return redirect('recipesapp:list')
         else:
-            return render(request, 'recipesapp:list')
+            return render(request, 'userslist/login.html')
 
     username = request.POST["username"]
     password = request.POST["password"]
@@ -52,6 +54,36 @@ def logout_view(request: HttpRequest):
     logout(request)
     # return redirect('userslist:login')
     return redirect('recipesapp:list')
+
+
+
+
+
+
+@login_required
+def user_update(request):
+    if request.method == 'POST':
+        user_form = UserForm(instance=request.user,
+                                 data=request.POST)
+        profile_form = ProfileForm(
+                                    instance=request.user.profile,
+                                    data=request.POST,
+                                    files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Данные пользователя изменены.')
+        else:
+            messages.error(request, 'Error updating your profile')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request,
+                  'userslist/user_update_form.html',
+                  {'user_form': user_form,
+                   'profile_form': profile_form})
+
+
 
 def set_cookie_view(request: HttpRequest):
     response = HttpResponse("Cookie set")

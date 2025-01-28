@@ -142,7 +142,7 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = reverse_lazy('userslist:about-me')
+LOGIN_REDIRECT_URL = reverse_lazy('recipesapp:list')
 LOGIN_URL = reverse_lazy('userslist:login')
 
 LOGFILE_NAME = BASE_DIR / 'log.txt'

@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+
+{% extends 'userslist/base.html' %}
+{% load static %}
+
+<html>
 <head>
-  {% extends 'userslist/base.html' %}
- <title>
+ <meta charset="utf-8" />
   {% block title %}
-    Профиль пользователя
+    <title>Сайт простых рецептов.Профиль пользователя</title>
   {% endblock %}
-  </title>
 </head>
 <body>
-  {% block body %}
-    <h3>Профиль пользователя</h3>
+
+  {% block content %}
+  <h3 style="display: flex; justify-content: center; color: #DD3333">Профиль пользователя </h3>
+  <div class="card text-center">
+    <div class="card-body">
     {% if user.is_authenticated %}
-      <p>Имя пользователя: {{ user.username }}</p>
-      <p>Имя: {{ user.first_name }}</p>
-      <p>Фамилия: {{ user.last_name }}</p>
-      <p>Email: {{ user.email }}</p>
-      <p>Дата рождения: {{user.profile.date_of_birth}}</p>
+        <h5 class="card-title">
+          <p>Имя пользователя: {{ user.username }}</p>
+          <p>Имя: {{ user.first_name }}</p>
+          <p>Фамилия: {{ user.last_name }}</p>
+          <p>Email: {{ user.email }}</p>
+          <p>Дата рождения: {{user.profile.date_of_birth}}</p>
+          {% if user.profile.photo %}
+            <img class="card-img-top" style="width:50%" src="{{ user.profile.photo.url }}" alt="">
+          {% else %}
+            <p style="color: red">Фото отсутствует.</p>
+          {% endif %}
     {% else %}
-      <p>Вы не авторизованы. Пожалуйста, авторизуйтесь.</p>
+          <p>Вы не авторизованы. Пожалуйста, авторизуйтесь.</p>
     {% endif %}
-  <div>
-    <a href="{% url 'recipesapp:list' %}">Вернуться на главную</a>
+        </h5>
+    </div>
   </div>
+  <div class="form-group py-3">
+    <a class="btn btn-outline-info"
+       href="{% url 'userslist:edit-user' %}">Изменить профиль</a>
+  </div>
+    <div class="form-group py-3">
+      <a class="btn btn-outline-primary"
+         href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+    </div>
+
   {% endblock %}
 </body>
 </html>

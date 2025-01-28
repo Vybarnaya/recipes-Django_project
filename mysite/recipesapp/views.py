@@ -16,7 +16,6 @@ log = logging.getLogger(__name__)
 class RecipeIndexView(View):
     def get(self, request: HttpRequest):
         log.info("User accessed recipe index page")
-
         return render(request, "recipesapp/recipe-index.html")
 
 
@@ -46,18 +45,6 @@ class RecipeCreateView(CreateView):
             return HttpResponse("<h3>Вы можете создать рецепт только под своим именем!</h3>")
 
 
-# class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-#     model = Recipe
-#     fields = ['title', 'description', "steps_of_cooking", "time_for_cooking", "photo"]
-#     template_name_suffix = "_update_form"
-#     def test_func(self):
-#         recipe = self.get_object()
-#         return self.request.user == recipe.author
-#
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
-
 class RecipeUpdateView(UpdateView):
     # permission_required = 'recipesapp.change_recipe'
     model = Recipe
@@ -71,11 +58,6 @@ class RecipeUpdateView(UpdateView):
 class RecipeDeleteView(DeleteView):
     model = Recipe
     success_url = reverse_lazy('recipesapp:list')
-
-    # def test_func(self):
-    #     recipe = self.get_object()
-    #     return self.request.user == recipe.author
-
 
 # class RecipeDeleteView(PermissionRequiredMixin, DeleteView):
 #     permission_required = 'recipesapp.delete_recipe'

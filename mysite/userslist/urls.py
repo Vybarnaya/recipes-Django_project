@@ -4,8 +4,7 @@ from .views import get_cookie_view, \
     set_cookie_view, get_session_view, \
     set_session_view, logout_view,\
     AboutMeView, RegisterView,\
-    HelloView
-
+    HelloView, user_update
 
 app_name = 'userslist'
 
@@ -18,6 +17,7 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('about-me/', AboutMeView.as_view(), name='about-me'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('edit-user/', user_update, name='edit-user'),
     path('cookie/get', get_cookie_view, name='get-cookie'),
     path('cookie/set', set_cookie_view, name='set-cookie'),
     path('session/get', get_session_view, name='get-session'),

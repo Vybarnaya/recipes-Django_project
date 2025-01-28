@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'userslist/base.html' %}
+{% load static %}
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  {% block title %}
+    <title>Сайт простых рецептов.Изменение профиля</title>
+  {% endblock %}
+</head>
+
+<body>
+  {% block content %}
+  <h3 style="display: flex; justify-content: center;">Изменение данных пользователя {{ user.username }}</h3>
+  <br>
+  <div class="container">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">При необходимости внесите изменения в поля профиля</legend>
+        {{ form.as_p }}
+        <div class="form-group py-3">
+          <label for="first_name">Изменить имя </label>
+          <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user.first_name }}">
+        </div>
+        <div class="form-group py-3">
+          <label for="last_name">Изменить фамилию</label>
+          <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user.last_name }}">
+        </div>
+        <div class="form-group py-3">
+          <label for="email">Изменить email</label>
+          <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+        </div>
+        <div class="form-group py-3">
+          <label for="date_of_birth">Изменить дату рождения</label>
+          <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ user.profile.date_of_birth }}">
+        </div>
+
+        <div class="form-group py-3">
+          <label for="photo">Изменить аватарку</label>
+          <input type="file" class="form-control-file" id="photo" name="photo">
+        </div>
+      </fieldset>
+
+      <div class="form-group py-3">
+        <button class="btn btn-outline-info" type="submit">Сохранить изменения</button>
+      </div>
+      <div  class="form-group py-3">
+        <a class="btn btn-outline-primary" style="height: 55px; width: 250px;"
+           href="{% url 'userslist:about-me' %}">Вернуться к профилю без сохранения изменений</a>
+      </div>
+    </form>
+  </div>
+  {% endblock %}
+</body>
+</html>

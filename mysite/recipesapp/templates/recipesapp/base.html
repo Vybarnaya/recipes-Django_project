@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html >
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +9,7 @@
       {% if title %}
          <title>{{title}}</title>
       {% else %}
-        <title>Сайт простых рецептов{{title}}</title>
+        <title>Сайт простых рецептов</title>
       {% endif %}
     {% endblock %}
     <link
@@ -20,8 +20,8 @@
     />
     <link rel="icon" href="../../../media/free-icon-chef-hat-8560938.png" type="image/x-icon">
   </head>
-  <body>
 
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="nav-link active" style="color: aliceblue;" href="{% url 'recipesapp:index' %}">Главная</a>
