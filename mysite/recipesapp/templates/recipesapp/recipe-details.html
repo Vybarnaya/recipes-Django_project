@@ -3,52 +3,52 @@
 {% load static %}
 
 <html>
-<head>
-  <meta charset="utf-8" />
-  {% block title %}
-    <title>Сайт простых рецептов.Рецепт №{{ recipe.pk }}</title>
-  {% endblock %}
-</head>
-<body>
-  {% block content %}
-  <div class="card mb-3">
-    <div class="card-body">
-      <h4 class="card-title"> <em>{{ recipe.title }}</em></h4>
-      <p class="card-text"><b>Описание:</b></p>
-      <p> {{ recipe.description }}</p>
-      <br>
-      <p class="card-text"><b>Шаги приготовления:</b></p>
-      <p>{{ recipe.steps_of_cooking }}</p>
-      <p class="card-text"><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
-      <h6 class="card-subtitle mb-2 text-muted">Автор: {{ recipe.author }}</h6>
-    {% if recipe.photo %}
+  <head>
+    <meta charset="utf-8" />
+    {% block title %}
+      <title>Сайт простых рецептов.Рецепт №{{ recipe.pk }}</title>
+    {% endblock %}
+  </head>
+  <body>
+    {% block content %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h4 class="card-title"> <em>{{ recipe.title }}</em></h4>
+        <p class="card-text"><b>Описание:</b></p>
+        <p> {{ recipe.description }}</p>
+        <br>
+        <p class="card-text"><b>Шаги приготовления:</b></p>
+        <p>{{ recipe.steps_of_cooking }}</p>
+        <p class="card-text"><b>Время приготовления</b>: {{ recipe.time_for_cooking }} мин.</p>
+        <h6 class="card-subtitle mb-2 text-muted">Автор: {{ recipe.author }}</h6>
+      {% if recipe.photo %}
+        <div>
+            <img class="card-img-top" style="width:50%" src="{{ recipe.photo.url }}" alt="">
+        </div>
+      {% else %}
+        <p class="card-text" style="color:red"><em><b>К сожалению, фото рецепта отсутствует.</b></em></p>
+      {% endif %}
       <div>
-          <img class="card-img-top" style="width:50%" src="{{ recipe.photo.url }}" alt="">
+        <p class="card-subtitle mb-2 text-muted" style="color:grey">Дата создания: {{ recipe.created_at|date:"F d, Y" }}</p>
+      </div>
+     </div>
+    </div>
+
+    {% if object.author == user or user.is_staff %}
+      <div class="form-group py-3">
+        <a class="btn btn-outline-info" href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
+      </div>
+      <div class="form-group py-3">
+        <a class="btn btn-outline-danger" href="{% url 'recipesapp:recipe_delete' pk=recipe.pk %}">Удалить рецепт</a>
+      </div>
+      <div class="form-group py-3">
+        <a class="btn btn-outline-primary" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
       </div>
     {% else %}
-      <p class="card-text" style="color:red"><em><b>К сожалению, фото рецепта отсутствует.</b></em></p>
-    {% endif %}
-    <div>
-      <p class="card-subtitle mb-2 text-muted" style="color:grey">Дата создания: {{ recipe.created_at|date:"F d, Y" }}</p>
-    </div>
-   </div>
-  </div>
-
-  {% if object.author == user or user.is_staff %}
-    <div class="form-group py-3">
-      <a class="btn btn-outline-info" href="{% url 'recipesapp:recipe_update' pk=recipe.pk %}">Изменить рецепт</a>
-    </div>
-    <div class="form-group py-3">
-      <a class="btn btn-outline-danger" href="{% url 'recipesapp:recipe_delete' pk=recipe.pk %}">Удалить рецепт</a>
-    </div>
     <div class="form-group py-3">
       <a class="btn btn-outline-primary" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
     </div>
-  {% else %}
-  <div class="form-group py-3">
-    <a class="btn btn-outline-primary" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
-  </div>
-  {% endif %}
-  {% endblock %}
-</body>
+    {% endif %}
+    {% endblock %}
+  </body>
 </html>

@@ -1,21 +1,43 @@
 <!DOCTYPE html>
+{% extends "userslist/base.html" %}
+{% load static %}
 
 <head>
-  <title>
+  <meta charset="UTF-8">
   {% block title %}
-    Обо мне
+    <title>Сайт простых рецептов.Регистрация</title>
   {% endblock %}
-  </title>
 </head>
-<body>
-{% block body %}
 
-<h1>Регистрация</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Зарегистрироваться">
-  </form>
-{% endblock %}
+<body>
+{% block content %}
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-4">Заполните поля  для создания аккаунта</legend>
+    <div class="container">
+        <form method="post">
+          {% csrf_token %}
+          <fieldset class="form-group">
+          {{ form.as_p }}
+            <div class="form-group py-3">
+              <button class="btn btn-outline-primary" type="submit">Зарегистрироваться</button>
+            </div>
+          </fieldset>
+        </form>
+    </div>
+  </fieldset>
+<br>
+<fieldset class="form-group">
+  <legend class="border-bottom mb-4">Уже зарегистированы?</legend>
+  <a class="btn btn-outline-primary" href="{% url 'userslist:login' %}">Войти</a>
+</fieldset>
+<br>
+<fieldset class="form-group">
+<div class="form-group py-3">
+  <a class="btn btn-outline-info" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+</div>
+
+</fieldset>
+  {% endblock %}
+
 </body>
 </html>

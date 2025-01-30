@@ -84,7 +84,6 @@ def user_update(request):
                    'profile_form': profile_form})
 
 
-
 def set_cookie_view(request: HttpRequest):
     response = HttpResponse("Cookie set")
     response.set_cookie('fizz', 'buzz', max_age=3600)

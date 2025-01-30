@@ -46,7 +46,6 @@ class RecipeCreateView(CreateView):
 
 
 class RecipeUpdateView(UpdateView):
-    # permission_required = 'recipesapp.change_recipe'
     model = Recipe
     fields = "title", "description", "steps_of_cooking", "time_for_cooking", "photo"
     template_name_suffix = "_update_form"

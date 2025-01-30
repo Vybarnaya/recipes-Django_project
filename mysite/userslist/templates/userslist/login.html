@@ -4,20 +4,39 @@
 
 <head>
   <meta charset="UTF-8">
-
   {% block title %}
-    <title>Авторизация</title>
+    <title>Сайт простых рецептов.Авторизация</title>
   {% endblock %}
 
 </head>
 <body>
-  {% block body %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+  {% block content %}
 
-    <button type="submit">Войти</button>
-  </form>
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-4">Введите свои данные для авторизации</legend>
+    <div class="container">
+      <div class="login-form">
+        <form method="post">
+          {% csrf_token %}
+          <fieldset class="form-group">
+          {{ form.as_p }}
+            <div class="form-group py-3">
+              <button class="btn btn-outline-primary" type="submit">Войти   </button>
+            </div>
+            </fieldset>
+        </form>
+        <br>
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Еще не зарегистрированы?</legend>
+            <a class="btn btn-outline-primary" href="{% url 'userslist:register' %}">Регистрация</a>
+          </fieldset>
+        <br>
+        <div class="form-group py-3">
+          <a class="btn btn-outline-info" href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
+        </div>
+      </div>
+    </div>
+  </fieldset>
   {% endblock %}
 
 </body>

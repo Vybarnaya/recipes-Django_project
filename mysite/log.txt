@@ -6452,3 +6452,49 @@ django.core.exceptions.ImproperlyConfigured: UpdateView is missing a QuerySet. D
 2025-01-28 16:18:18,208 [WARNING] django.request: Not Found: /user/about-me/users/2025/01/28/133786657223401120.jpg
 2025-01-28 16:21:44,696 [WARNING] django.request: Not Found: /user/about-me/users/2025/01/28/133786657223401120.jpg
 2025-01-28 16:21:54,772 [WARNING] django.request: Not Found: /user/about-me/users/2025/01/28/133792338439026383.jpg
+2025-01-28 16:29:12,879 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\userslist\views.py changed, reloading.
+2025-01-28 16:29:13,336 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 16:29:27,352 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\userslist\views.py changed, reloading.
+2025-01-28 16:29:27,773 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 16:29:51,823 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\userslist\views.py changed, reloading.
+2025-01-28 16:29:52,300 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 16:31:59,596 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\userslist\views.py changed, reloading.
+2025-01-28 16:32:00,033 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 16:37:44,018 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\userslist\views.py changed, reloading.
+2025-01-28 16:37:44,467 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 20:00:24,281 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:12:02,097 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:12:07,714 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:12:33,460 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:15:55,241 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:15:56,446 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:16:30,721 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 20:20:07,700 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py changed, reloading.
+2025-01-28 20:20:08,008 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py changed, reloading.
+2025-01-28 20:20:08,408 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 20:20:08,529 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 20:20:08,964 [ERROR] django.request: Internal Server Error: /recipe/authors/
+Traceback (most recent call last):
+  File "C:\Users\User\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py", line 76, in authors_list
+    authors = Recipe.objects.value('author')
+              ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Manager' object has no attribute 'value'
+2025-01-28 20:20:17,139 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py changed, reloading.
+2025-01-28 20:20:17,158 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py changed, reloading.
+2025-01-28 20:20:17,578 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 20:20:17,603 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 20:20:49,953 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py changed, reloading.
+2025-01-28 20:20:49,955 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\recipesapp\views.py changed, reloading.
+2025-01-28 20:20:50,449 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-01-28 21:08:05,981 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 21:33:29,458 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 21:33:31,009 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 21:33:58,405 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 21:37:11,773 [INFO] recipesapp.views: User accessed recipe index page
+2025-01-28 21:37:13,850 [INFO] recipesapp.views: User accessed recipe index page
