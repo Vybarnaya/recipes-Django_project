@@ -71,6 +71,3 @@ class RecipeDeleteView(DeleteView):
 #         self.object.save()
 #         return HttpResponseRedirect(success_url)
 
-def authors_list(request):
-    authors = Recipe.objects.values('author')
-    return render(request, 'recipesapp/authors-list.html', {'authors': authors})

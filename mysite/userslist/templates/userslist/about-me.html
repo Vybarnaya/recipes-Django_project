@@ -13,7 +13,7 @@
 <body>
 
   {% block content %}
-  <h3 style="display: flex; justify-content: center; color: #DD3333">Профиль пользователя </h3>
+  <h3 style="display: flex; justify-content: center; color: #DD3333">Личный кабинет пользователя </h3>
   <div class="card text-center">
     <div class="card-body">
     {% if user.is_authenticated %}
@@ -42,7 +42,6 @@
       <a class="btn btn-outline-primary"
          href="{% url 'recipesapp:list' %}">Вернуться к списку рецептов</a>
     </div>
-
   {% endblock %}
 </body>
 </html>

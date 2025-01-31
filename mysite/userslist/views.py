@@ -74,7 +74,7 @@ def user_update(request):
             profile_form.save()
             messages.success(request, 'Данные пользователя изменены.')
         else:
-            messages.error(request, 'Error updating your profile')
+            messages.error(request, "ВНЕСЕНЫ НЕКОРРЕКТНЫЕ ДАННЫЕ!")
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
