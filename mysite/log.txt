@@ -7572,3 +7572,9 @@ Traceback (most recent call last):
     raise self.error(
 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 58: 'endblock', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
 2025-01-31 13:07:38,846 [INFO] recipesapp.views: User accessed recipe index page
+2025-02-03 14:30:25,573 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-02-03 14:30:33,631 [WARNING] django.request: Not Found: /favicon.ico
+2025-02-03 14:30:35,649 [WARNING] django.request: Not Found: /media/free-icon-chef-hat-8560938.png
+2025-02-03 14:30:38,348 [WARNING] django.request: Not Found: /favicon.ico
+2025-02-03 14:30:58,098 [INFO] recipesapp.views: User accessed recipe index page
+2025-02-03 14:31:11,280 [INFO] recipesapp.views: User accessed recipe index page
