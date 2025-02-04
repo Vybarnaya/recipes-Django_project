@@ -1,0 +1,11 @@
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.11
+build:
+  requirementsPath: C:\Users\User\PycharmProjects\ProjectDjango6\requirements.txt
+run:
+  scriptName: C:\Users\User\PycharmProjects\ProjectDjango6\mysite
+  persistenceMount: C:\Users\User\PycharmProjects
+  containerPort: 80

@@ -7578,3 +7578,9 @@ django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 58: 'e
 2025-02-03 14:30:38,348 [WARNING] django.request: Not Found: /favicon.ico
 2025-02-03 14:30:58,098 [INFO] recipesapp.views: User accessed recipe index page
 2025-02-03 14:31:11,280 [INFO] recipesapp.views: User accessed recipe index page
+2025-02-03 15:20:17,116 [WARNING] django.request: Not Found: /favicon.ico
+2025-02-03 16:22:10,932 [INFO] django.utils.autoreload: C:\Users\User\PycharmProjects\ProjectDjango6\mysite\mysite\settings.py changed, reloading.
+2025-02-04 15:17:40,586 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2025-02-04 15:18:07,002 [WARNING] django.request: Not Found: /favicon.ico
+2025-02-04 15:18:23,069 [WARNING] django.request: Not Found: /media/free-icon-chef-hat-8560938.png
+2025-02-04 15:18:28,202 [WARNING] django.request: Not Found: /favicon.ico
