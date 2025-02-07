@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from os import getenv
+import logging.config
 from pathlib import Path
 
 from django.urls import reverse_lazy
@@ -17,19 +18,35 @@ from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# DATABASE_DIR = BASE_DIR / "database"
+# DATABASE_DIR.mkdir(exist_ok=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fyp3%j!dl=w9th@x%12viv-!nq-d&w=qkxcogv=7$@zy^5r*7p'
+SECRET_KEY = getenv("DJANGO_SECRET_KEY",
+                    "django-insecure-fyp3%j!dl=w9th@x%12viv-!nq-d&w=qkxcogv=7$@zy^5r*7p",)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv("DJANGO_DEBUG", "1") == "1"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "127.0.0.1",
+]
 
+INTERNAL_IPS =[
+    "127.0.0.1",
+]
+
+if DEBUG:
+    import socket
+    hostname,  _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS.append("10.0.2.2")
+    INTERNAL_IPS.extend(
+        [ip[: ip.rfind(".")] + "1" for ip in ips]
+    )
 
 # Application definition
 
@@ -40,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'rest_framework',
     'recipesapp.apps.RecipesappConfig',
     'userslist.apps.UserslistConfig',
@@ -55,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -85,6 +104,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': DATABASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -123,11 +143,11 @@ USE_L10N = True
 
 LOCALE_PATHS = [BASE_DIR / 'locale/']
 
-LANGUAGES = [
-    ("en", _("English")),
-    ("fr", _("French")),
-    ("ru", _("Russian"),)
-]
+# LANGUAGES = [
+#
+#     ("fr", _("French")),
+#     ("ru", _("Russian"),)
+# ]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -148,7 +168,7 @@ LOGIN_URL = reverse_lazy('userslist:login')
 LOGFILE_NAME = BASE_DIR / 'log.txt'
 LOGFILE_SIZE = 1 * 1024 * 1024
 LOGFILE_COUNT = 3
-
+LOGLEVEL = getenv("DJANGO_LOGLEVEL", "info").upper()
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -180,3 +200,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
     'PAGE_SIZE': 10,
 }
+
