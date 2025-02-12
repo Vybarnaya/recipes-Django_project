@@ -10,22 +10,16 @@
 
 </head>
 <body>
-{% block content %}
-
-<h3 style="display: flex; justify-content: center; ">Добро пожаловать на наш сайт полезных и вкусных рецептов!</h3>
-  <div>
-    <br>
-  <img
-    width="1150px" src="https://pictures.pibig.info/uploads/posts/2023-11/thumbs/1700181876_pictures-pibig-info-p-kulinarnaya-raskraska-instagram-44.jpg"
-    alt="Живи вкусно!">
+{% block body %}
+  <h3 style="text-align: center; ">Добро пожаловать на наш сайт полезных и вкусных рецептов!</h3>
+  <div style="width: 100vw; height: 70vh; display: flex; align-items: center; justify-content: center;">
+    <img style="max-width: 90%;  max-height: 70%; display: block;" src="https://prorisuem.ru/foto/9315/risunok_zdorovaia_eda_19.webp">
   </div>
-  <br>
+  <h4 style="text-align: center; color:#DD3333;">Готовьте быстро, просто и вкусно с нашим сайтом! </h4>
+  <h4 style="text-align: center; color:#DD3333;">Наши рецепты помогут Вам cэкономить время и угодить всем вкусам!</h4>
 
-<h4 style="text-align: center; color:#DD3333;">Готовьте быстро, просто и вкусно с нашим сайтом! </h4>
-<h4 style="text-align: center; color:#DD3333;">Наши рецепты помогут Вам cэкономить время и угодить всем вкусам!</h4>
+  {% endblock %}
 
-
-{% endblock %}
 </body>
 </html>
 
