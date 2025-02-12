@@ -19,8 +19,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
+from recipesapp.views import RecipeIndexView
 
 urlpatterns = [
+    path("", RecipeIndexView.as_view(), name="index"),
     path('admin/', admin.site.urls),
     path('recipe/', include('recipesapp.urls')),
     path('user/', include('userslist.urls')),
